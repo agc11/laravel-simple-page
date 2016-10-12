@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('/pizzas', function (Request $request) {
+   return \App\Pizza::all() ?: [];
+});

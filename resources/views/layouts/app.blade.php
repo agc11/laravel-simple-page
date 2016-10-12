@@ -78,10 +78,6 @@
             </div>
         </nav>
 
-    </div>
-
-    <div class="container">
-        @include('partials.admin-nav')
         @yield('content')
     </div>
 

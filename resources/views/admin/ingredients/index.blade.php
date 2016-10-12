@@ -1,49 +1,57 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Ingredientes')
 
 @section('content')
-    <div class="container">
 
-        @include('partials.nav-ingredients')
-
-        <hr />
 
         @include('partials.flash')
 
-        @forelse($ingredients as $ingredient)
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{ $ingredient->name }}
-                </div>
-                <div class="panel-body">
-                    <p>Precio: {{ $ingredient->price }}</p>
-                </div>
+            {{
+                 link_to_action(
+                     'Admin\IngredientController@create',
+                     'Crear Ingrediente',
+                     [],
+                     ['class' => 'btn btn-md btn-success pull-right']
+                 )
+             }}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
 
-                <div class="panel-footer" style="height: 45px;">
+                <tbody>
 
-                    {{
-                        link_to_action(
-                            'IngredientController@edit', 'Editar', ['id' => $ingredient->id], ['class' => 'col-md-2']
-                        )
-                    }}
+                @forelse($ingredients as $ingredient)
+                    <tr>
+                        <td>{{ $ingredient->id }}</td>
+                        <td>{{ $ingredient->name }}</td>
+                        <td>{{ $ingredient->price }}</td>
+                        <td>
+                            {{
+                            link_to_action(
+                                'Admin\IngredientController@edit', 'Editar Ingrediente', ['id' => $ingredient->id], ['class' => 'btn btn-xs btn-info']
+                            )
+                            }}
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4">No hay ingredientes</td>
+                    </tr>
+                @endforelse
 
-                    <span class="pull-right">
-                        {!! Form::open(['method' => 'DELETE', 'route' => ['ingredients.destroy', $ingredient->id] ]) !!}
-                        {!! Form::submit('Borrar', ["class" => "btn btn btn-xs btn-danger"]) !!}
-                        {!! Form::close() !!}
-                    </span>
+                </tbody>
 
-                </div>
-            </div>
-        @empty
-            <div class="alert alert-danger">
-                No hay Ingredientes
-            </div>
-        @endforelse
+            </table>
 
         @if(    $ingredients)
             {{ $ingredients->links() }}
         @endif
-    </div>
+
 @endsection

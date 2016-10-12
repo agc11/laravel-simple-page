@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        @include('partials.nav-ingredients')
+        @include('partials.admin-nav')
 
         <hr />
 
@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        {!! Form::model($ingredient, ['route' => ['ingredients.update', $ingredient->id], 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit-ingredient']) !!}
+        {!! Form::model($ingredient, ['route' => ['admin.ingredients.update', $ingredient->id], 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit-ingredient']) !!}
 
         <div class="form-group">
             {!! Form::label('name', 'Nombre') !!}
@@ -33,7 +33,7 @@
         </div>
 
 
-        {!! Form::submit('Editar ingrediente', ['class' => 'btn btn-success']) !!}
+        {!! Form::submit('Actualizar ingrediente', ['class' => 'btn btn-success']) !!}
         {!! Form::close() !!}
     </div>
 

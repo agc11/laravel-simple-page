@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        @include('partials.nav-ingredients')
+        @include('partials.admin-nav')
 
         <hr />
 
@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        {!! Form::model($ingredient, ['action' => 'IngredientController@store']) !!}
+        {!! Form::model($ingredient, ['action' => 'Admin\IngredientController@store']) !!}
 
 
         <div class="form-group">
