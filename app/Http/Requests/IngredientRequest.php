@@ -13,7 +13,7 @@ class IngredientRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->user()->role_id === 1;
+        return auth()->user()->role_id === 1 | auth()->user()->role_id === 2;
     }
 
     /**

@@ -35,12 +35,13 @@
                         {!! Form::close() !!}
                     @endif
 
+                    @can('delete', $pizza)
                     <span class="pull-right">
                         {!! Form::open(['method' => 'DELETE', 'route' => ['pizzas.destroy', $pizza->id] ]) !!}
                         {!! Form::submit('Borrar', ["class" => "btn btn btn-xs btn-danger"]) !!}
                         {!! Form::close() !!}
                     </span>
-
+                    @endcan
                 </div>
             </div>
         @empty

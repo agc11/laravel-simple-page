@@ -130,6 +130,7 @@ class PizzaController extends Controller {
      */
     public function destroy($id)
     {
+        $this->authorize('delete', Pizza::find($id));
         Pizza::destroy($id);
         return redirect('pizzas')->with('message', 'Pizza eliminada');
     }

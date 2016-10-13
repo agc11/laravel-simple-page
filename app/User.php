@@ -32,7 +32,7 @@ class User extends Authenticatable
         return $this->hasMany('pizzas');
     }
 
-    public function role()
+    public function roles()
     {
         return $this->belongsToMany('App\Role');
     }

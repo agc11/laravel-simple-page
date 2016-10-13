@@ -12,10 +12,14 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         \Illuminate\Support\Facades\DB::table('roles')->insert([
-           [
+            [
+                'name' => 'root',
+                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
                'name' => 'admin',
                'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-           ],
+            ],
             [
                 'name' => 'registered',
                 'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
